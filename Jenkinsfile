@@ -61,7 +61,6 @@ node('docker') {
         }
     }
 
-    mailIfStatusChanged(findEmailRecipients(emailRecipients))
 }
 
 static void generateCoverageReportForSonarQube(def mvn) {
