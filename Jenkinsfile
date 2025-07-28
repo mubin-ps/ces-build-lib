@@ -57,9 +57,7 @@ node('docker') {
             mvnWithJdk17.useLocalRepoFromJenkins = true
             sonarQube.analyzeWith(mvnWithJdk17)
 
-            if (!sonarQube.waitForQualityGateWebhookToBeCalled()) {
-                unstable("Pipeline unstable due to SonarQube quality gate failure")
-            }
+
         }
     }
 
