@@ -47,9 +47,11 @@ node('docker') {
 
         stage('SonarQube') {
             generateCoverageReportForSonarQube(mvn)
-            def sonarQube = cesBuildLib.SonarQube.new(this, 'ces-sonar')
-            sonarQube.updateAnalysisResultOfPullRequestsToGitHub('sonarqube-gh-token')
-
+            def sonarQube = cesBuildLib.SonarQube.new(this, [
+            token: 'sonar-credentials', // replace with your Jenkins credentials ID for Sonar token
+            sonarHostUrl: 'http:// 172.27.64.1:9000'
+       ])
+            
             // SonarQube >= v25.01 needs JDK 17
             def mvnWithJdk17 = cesBuildLib.MavenWrapperInDocker.new(this, 'eclipse-temurin:17.0.14_7-jdk-alpine')
             mvnWithJdk17.useLocalRepoFromJenkins = true
