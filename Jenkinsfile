@@ -48,7 +48,7 @@ node('docker') {
         stage('SonarQube') {
             generateCoverageReportForSonarQube(mvn)
             def sonarQube = cesBuildLib.SonarQube.new(this, [
-            token: 'sonar-credentials', // replace with your Jenkins credentials ID for Sonar token
+            token: 'sonar-token', // replace with your Jenkins credentials ID for Sonar token
             sonarHostUrl: 'http:// 172.27.64.1:9000'
        ])
             
