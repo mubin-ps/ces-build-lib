@@ -49,7 +49,7 @@ node('docker') {
             generateCoverageReportForSonarQube(mvn)
             def sonarQube = cesBuildLib.SonarQube.new(this, [
             token: 'sonar-token', // replace with your Jenkins credentials ID for Sonar token
-            sonarHostUrl: 'http:// 172.27.64.1:9000'
+            sonarHostUrl: 'http://172.27.64.1:9000'
        ])
             
             // SonarQube >= v25.01 needs JDK 17
